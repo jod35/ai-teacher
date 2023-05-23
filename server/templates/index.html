@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="form d-flex justify-content-between mt-4">
+            <div class="left">
+                <h5>The source Text you want to summarize</h5>
+                <form id="summary-form">
+                    <textarea name="source" id="" cols="70" rows="10" class="form-control" placeholder="Enter text to summarize"></textarea>
+                    <input type="submit" value="Summarize Text" class="btn btn-primary mt-4">
+                    <input type="Reset" value="Reset" class="btn btn-success mt-4" id="resetButton">
+                </form>
+            </div>
+            <div class="right">
+                <h5>The summary</h5>
+                <textarea name="" cols="70" rows="10" class="form-control" id="summarizedText" readonly placeholder="Result will display here"></textarea>
+            </div>
+    </div>
+{% endblock content %}
+    
