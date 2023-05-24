@@ -4,7 +4,8 @@ from main import load_text
 
 
 
-server_bp = Blueprint('server',__name__,template_folder='./templates')
+server_bp = Blueprint('server',__name__,template_folder='./templates',
+                      static_folder="static",static_url_path="/server/static")
 
 
 @server_bp.get('/')

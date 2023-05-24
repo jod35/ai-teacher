@@ -13,7 +13,7 @@ def load_text(text):
     doc = nlp(text)
 
     tokens = [token.text for token in doc]
-    print(tokens)
+    
 
     from string import punctuation
     punctuation = punctuation + '\n'
@@ -54,5 +54,5 @@ def load_text(text):
 
     final_summary = [word.text for word in summary]
     summary = "".join(final_summary)
-
+    print(final_summary)
     return summary

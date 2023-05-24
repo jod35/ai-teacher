@@ -4,7 +4,8 @@
             <div class="left">
                 <h5>The source Text you want to summarize</h5>
                 <form id="summary-form">
-                    <textarea name="source" id="" cols="70" rows="10" class="form-control" placeholder="Enter text to summarize"></textarea>
+                    <textarea name="source" id="sourceTextInput" cols="70" rows="10" class="form-control" placeholder="Enter text to summarize"></textarea>
+                    <p id="source_text_len" class="mt-2" disabled><span id="source_len"></span>Characters</p>
                     <input type="submit" value="Summarize Text" class="btn btn-primary mt-4">
                     <input type="Reset" value="Reset" class="btn btn-success mt-4" id="resetButton">
                 </form>
@@ -12,6 +13,7 @@
             <div class="right">
                 <h5>The summary</h5>
                 <textarea name="" cols="70" rows="10" class="form-control" id="summarizedText" readonly placeholder="Result will display here"></textarea>
+                <p id="result_text_len" class="mt-2" disabled></p>
             </div>
     </div>
 {% endblock content %}
