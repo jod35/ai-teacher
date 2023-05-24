@@ -3,17 +3,21 @@
     <div class="form d-flex justify-content-between mt-4">
             <div class="left">
                 <h5>The source Text you want to summarize</h5>
+                <p id="source_text_len"  disabled ></p>
                 <form id="summary-form">
-                    <textarea name="source" id="sourceTextInput" cols="70" rows="10" class="form-control" placeholder="Enter text to summarize" required></textarea>
-                    <p id="source_text_len" class="mt-2" disabled><span id="source_len"></span>Characters</p>
+                    <textarea name="source" id="sourceTextInput" cols="70" rows="15" class="form-control" placeholder="Enter text to summarize" required></textarea>
                     <input type="submit" value="Summarize Text" class="btn btn-primary mt-4">
                     <input type="Reset" value="Reset" class="btn btn-success mt-4" id="resetButton">
                 </form>
             </div>
             <div class="right">
                 <h5>The summary</h5>
-                <textarea name="" cols="70" rows="10" class="form-control" id="summarizedText" readonly placeholder="Result will display here" required></textarea>
-                <p id="result_text_len" class="mt-2" disabled></p>
+                <p id="result_text_len"  disabled></p>
+                <textarea name="" cols="70" rows="15" class="form-control" id="summarizedText" readonly placeholder="Result will display here" required></textarea>
+                <img src="{{url_for('server.static',filename='loadin.gif')}}" class="loading" alt="" srcset="">
+                <br>
+                <button class="btn btn-primary mt-4" id="paraphrase-btn">Paraphrase</button>
+                <button class="btn btn-info mt-4" id="copy-btn">Copy</button>
             </div>
     </div>
 {% endblock content %}
