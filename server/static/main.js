@@ -9,6 +9,7 @@ let sourceLength = 0;
 let resultLength = 0;
 
 sourceLengthText.innerText = `${sourceLength} characters`;
+resultTextLength.innerText = `${resultLength} characters`;
 
 //summarize the text using AJAX
 const summarizeText = async (text)=>{
@@ -24,9 +25,15 @@ const summarizeText = async (text)=>{
     const responseText = await response.json();
 
     console.log(responseText)
-    
-
     resultTextInput.textContent = responseText.summarizedText;
+    resultTextLength.innerText = `${responseText.length} characters`;
+
+}
+
+
+//handle source text input (capture source text length on input)
+const handleSourceTextInput = ()=>{
+    sourceLengthText.innerText = `${sourceTextInput.value.length} characters`;
 
 }
 
@@ -46,6 +53,8 @@ const submitFormtoServer = (event)=>{
 const resetFormAndOutput = ()=>{
     form.reset();
     resultTextInput.textContent="";
+    resultTextLength.innerText = `${0} characters`;
+    sourceLengthText.innerText = `${0} characters`;
 }
 
 
@@ -55,5 +64,7 @@ const resetFormAndOutput = ()=>{
 form.addEventListener('submit',submitFormtoServer);
 
 resetButton.addEventListener('click',resetFormAndOutput);
+
+sourceTextInput.addEventListener('input',handleSourceTextInput);
 
 console.log(form)

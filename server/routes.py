@@ -19,4 +19,4 @@ def submit_and_summarize_text():
 
     output = load_text(data.get('text'))
 
-    return jsonify({"summarizedText":output})
+    return jsonify({"summarizedText":output,"length":len(output)})
