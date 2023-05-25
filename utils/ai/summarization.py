@@ -68,8 +68,3 @@ def summarize_text_with_large_cnn(text):
     sum_obj = load_data_and_model()(text)
 
     return sum_obj[0]["summary_text"]
-
-
-"""
-`
-    """

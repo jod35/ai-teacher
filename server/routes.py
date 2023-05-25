@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,request,jsonify
-from main import summarize_text_with_large_cnn,summarize_with_scrapy
-
+from utils.ai.summarization import summarize_text_with_large_cnn,summarize_with_scrapy
+from utils.ai.paraphrasing import paraphrase_text
 
 
 
@@ -24,3 +24,11 @@ def submit_and_summarize_text():
     output = summarize_with_scrapy(text) if summary_type == "basic" else summarize_text_with_large_cnn(text)
 
     return jsonify({"summarizedText":output,"length":len(output)})
+
+@server_bp.post('/paraphrase')
+def paraphrase_text():
+
+    data = request.get_json()
+
+    print(data)    
+    return jsonify({"message":"Hello World"})
