@@ -15,19 +15,20 @@ sourceLengthText.innerText = `${sourceLength} characters`;
 resultTextLength.innerText = `${resultLength} characters`;
 
 //summarize the text using AJAX
-const summarizeText = async (text)=>{
+const summarizeText = async (text,type)=>{
     const requestOptions = {
         method : "POST",
         headers:{
             "Content-Type":"application/json"
         },
-        body:JSON.stringify({text})
+        body:JSON.stringify({text,type})
     }
 
     const response = await fetch('/',requestOptions);
-    loadingGif.style.visibility = 'visible';
 
     const responseText = await response.json();
+
+    console.log(responseText)
 
     resultTextInput.textContent = responseText.summarizedText;
     loadingGif.style.visibility = 'hidden';
@@ -45,11 +46,16 @@ const handleSourceTextInput = ()=>{
 
 //handle source text form
 const submitFormtoServer = (event)=>{
+    loadingGif.style.visibility = 'visible';
     let formData = new FormData(form);
+
+    console.log({'type':formData.get('summary_type'),'text':formData.get('source')})
+    
     let sourceText = formData.get('source');
 
+    let summaryType = formData.get('summary_type');
 
-    summarizeText(sourceText)
+    summarizeText(sourceText,summaryType)
 
     event.preventDefault();
 }

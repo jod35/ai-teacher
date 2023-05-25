@@ -1,11 +1,11 @@
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
-
+from transformers import pipeline
 
 
 from heapq import nlargest
 
-def load_text(text):
+def summarize_with_scrapy(text):
     stopwords = list(STOP_WORDS)
      
     nlp = spacy.load('en_core_web_sm')
@@ -56,3 +56,20 @@ def load_text(text):
     summary = "".join(final_summary)
     print(final_summary)
     return summary
+
+
+def load_data_and_model():
+    summarizer = pipeline("summarization", model = "facebook/bart-large-cnn")
+
+    return summarizer
+
+
+def summarize_text_with_large_cnn(text):
+    sum_obj = load_data_and_model()(text)
+
+    return sum_obj[0]["summary_text"]
+
+
+"""
+
+    """

@@ -5,3 +5,7 @@
     left: 5px;
     visibility: hidden;
 }
+#summarizedText{
+    border: none;
+    background: none;
+}

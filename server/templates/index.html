@@ -1,23 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="form d-flex justify-content-between mt-4">
-            <div class="left">
+    <div class="row g-3 mt-4">
+            <div class="col-6 left">
                 <h5>The source Text you want to summarize</h5>
                 <p id="source_text_len"  disabled ></p>
                 <form id="summary-form">
-                    <textarea name="source" id="sourceTextInput" cols="70" rows="15" class="form-control" placeholder="Enter text to summarize" required></textarea>
+                    <div class="form-group mt-2">
+                        <textarea name="source" id="sourceTextInput" cols="70" rows="15" class="mt-2  form-control" placeholder="Enter text to summarize" required></textarea>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="summary_type">
+                            Which summary do you want?
+                        </label>
+                        <select name="summary_type" id="summary" class="form-select mt-2">
+                            <option value="basic">Shorter version (less time)</option>
+                            <option value="detailed">More detailed (longer time)</option>
+                        </select>
+                    </div>
                     <input type="submit" value="Summarize Text" class="btn btn-primary mt-4">
                     <input type="Reset" value="Reset" class="btn btn-success mt-4" id="resetButton">
+                    <a class="btn btn-primary mt-4" id="paraphrase-btn">Paraphrase</a>
+                    <a class="btn btn-info mt-4" id="copy-btn">Copy</a>
                 </form>
             </div>
-            <div class="right">
+            <div class="col-6 right">
                 <h5>The summary</h5>
                 <p id="result_text_len"  disabled></p>
-                <textarea name="" cols="70" rows="15" class="form-control" id="summarizedText" readonly placeholder="Result will display here" required></textarea>
-                <img src="{{url_for('server.static',filename='loadin.gif')}}" class="loading" alt="" srcset="">
-                <br>
-                <button class="btn btn-primary mt-4" id="paraphrase-btn">Paraphrase</button>
-                <button class="btn btn-info mt-4" id="copy-btn">Copy</button>
+                <div style="">
+                    <textarea name="" cols="70" rows="15" class="form-control mt-4" id="summarizedText" readonly placeholder="Result will display here" required></textarea>
+                    <img src="{{ url_for('server.static',filename='loadin.gif') }}" class="loading" alt="">
+                </div>
             </div>
     </div>
 {% endblock content %}
