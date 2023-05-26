@@ -95,8 +95,9 @@ const paraphraseText = async () => {
   });
 
   const data = await response.json();
+  console.log(data)
 
-  console.log(data);
+  resultTextInput.value = data.summarized_text; 
 };
 
 // send text to server

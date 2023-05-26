@@ -1,6 +1,6 @@
 from flask import Blueprint,render_template,request,jsonify
 from utils.ai.summarization import summarize_text_with_large_cnn,summarize_with_scrapy
-from utils.ai.paraphrasing import paraphrase_text
+from utils.ai.paraphrasing import paraphraser
 
 
 
@@ -30,5 +30,6 @@ def paraphrase_text():
 
     data = request.get_json()
 
-    print(data)    
-    return jsonify({"message":"Hello World"})
+    text = data.get('text')
+    summary_text = paraphraser(text)    
+    return jsonify({"summarized_text":summary_text[0]})
