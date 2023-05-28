@@ -28,8 +28,6 @@ const summarizeText = async (text, type) => {
 
   const responseText = await response.json();
 
-  console.log(responseText);
-
   resultTextInput.textContent = responseText.summarizedText;
   loadingGif.style.visibility = "hidden";
   paraphraseButton.style.visibility = "visible";
@@ -47,11 +45,6 @@ const handleSourceTextInput = () => {
 const submitFormtoServer = (event) => {
   loadingGif.style.visibility = "visible";
   let formData = new FormData(form);
-
-  console.log({
-    type: formData.get("summary_type"),
-    text: formData.get("source"),
-  });
 
   let sourceText = formData.get("source");
 
@@ -86,6 +79,8 @@ const copyText = async () => {
 
 // paraphrase summarized text
 const paraphraseText = async () => {
+  console.log("paraphrase")
+  console.log({text:resultTextInput.value})
   const response = await fetch("/paraphrase", {
     method: "POST",
     headers: {
